@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- For responsive design -->
+    <link rel="stylesheet" href="style2.css">
+
+    <title>Enter Names</title>
+</head>
+<body>
+    <h2>Enter Player Names</h2>
+    <div>
+        <input type="text" id="player1Name" placeholder="Player 1 Name" autocomplete="off"> <!-- Added autocomplete="off" for privacy -->
+        <input type="text" id="player2Name" placeholder="Player 2 Name" autocomplete="off">
+        <button id="startGame">Start Game</button>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function() {
+            $("#startGame").click(function() {
+                const player1Name = $("#player1Name").val().trim();
+                const player2Name = $("#player2Name").val().trim();
+
+                //USERES CANNOT PROCEED
+                if (!player1Name || !player2Name) {
+                    alert("Please enter names for both players.");
+                    return;
+                }
+
+                //storing in local storage
+                localStorage.setItem("player1Name", player1Name);
+                localStorage.setItem("player2Name", player2Name);
+
+                //REDIRECTION TOT HE NEXT PAGE
+                window.location.href = "display.html";
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    /* match html*/
+    background-color: #95ba95; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+#game-header {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#game-container {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: center; 
+    gap: 20px; 
+
+}
+
+#turns{
+    font-size: 20px;
+    color:#333;
+    margin-bottom: 20px;
+}
+
+.player {
+    border: 2px solid #4CAF50; 
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #f9f9f9; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    height: 300px; 
+}
+
+#svg_box {
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff; 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+    padding: 20px; 
+
+}
+
+h2 {
+    color: #333;
+    position: absolute; 
+    top: 5%; 
+    left: 50%;
+    transform: translateX(-50%); 
+}
+
+#velocity-display {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    background-color: black;
+    padding: 10px;
+    border-radius: 4px;
+    z-index: 10;
+}

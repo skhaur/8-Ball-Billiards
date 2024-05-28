@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Pool Table</title>
+  <style>
+    .line {
+        position: absolute;
+        background-color: rgb(128, 31, 31); 
+        height: 4px; 
+        pointer-events: none; 
+    }
+
+  </style>
+
+  <!--js for mouse tracking -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="game.js"></script>
+  <script>
+
+   $(document).ready(function() {
+    if (localStorage.getItem('contentFetched') !== 'true') {
+        $.ajax({
+          url: '/display.html',
+          method: 'GET',
+          success: function(data) {
+
+            $('#table-svg').html(data)
+            console.log($('#svg_box').html());
+
+            localStorage.setItem('contentFetched', 'true');
+          },
+          error: function(xhr, status, error) {
+            console.error("Error fetching content: ", error);
+            $('#table-svg').html("<p>Error loading content.</p>");
+          }
+        });
+
+    }
+      //mouse TRACKING CODE REETRIEVED FROM KREMER
+      function trackit(event) {
+          $('#valx').remove();
+          $('#valy').remove();
+          $('<div id="valx">'+event.pageX+'</div>').appendTo("#x");
+          $('<div id="valy">'+event.pageY+'</div>').appendTo("#y");
+        }
+
+        $('svg').mousemove(trackit);
+
+    });
+  </script>
+
+</head>
+<body>
+    <div id="game-header">
+        <h2>Pool Game</h2>
+    </div>
+    <div id="game-container">
+        <div class="player" id="player1-info">
+            <h3>Player 1: <span id="player1NameDisplay"></span></h3>
+        </div>
+        <div id="svg_box">
+            <!-- REPLACE WITH SVG -->
+        </div>
+        <div class="player" id="player2-info">
+            <h3>Player 2: <span id="player2NameDisplay"></span></h3>
+        </div>
+    </div>
+    <div id="turns">
+      <h3 id="currentTurn">Current Turn: <span id="currentTurnName">Player Name</span></h3>
+      <h3 id="ballAssignmentMsg">Ball Assignment:</h3>
+    </div>
+    <div id="velocity-display">Velocity: 0</div>
+    <!-- Remaining JavaScript and HTML content -->
+</body>
+
+
+</html>
